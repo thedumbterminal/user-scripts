@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name        removeFacebookSuggestedPosts
 // @namespace   DT
+// @description Remove facebook suggested posts
 // @include     https://www.facebook.com/
 // @version     1
 // @grant       none
