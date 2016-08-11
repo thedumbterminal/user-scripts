@@ -1,22 +1,23 @@
 // ==UserScript==
 // @name        removeFacebookSuggestedPosts
 // @namespace   DT
-// @description Remove facebook suggested posts
+// @description Remove facebook suggested posts and games
 // @include     https://www.facebook.com/
-// @version     1
+// @version     2
 // @grant       none
 // ==/UserScript==
 
 var DT = {};
 
 DT._ticking = false;
+DT._unwanted = ['Suggested Post', 'Suggested Game'];
 
 DT.main = function(){
 	var spans = document.getElementsByTagName("SPAN");
 	var totalSpans = spans.length;
 	for(var i = 0; i < totalSpans; i++){
 		var item = spans.item(i);
-		if(item && item.textContent === 'Suggested Post'){
+		if(item && DT._unwanted.indexOf(item.textContent) > -1){
 			var parent = item.parentNode.parentNode.parentNode.parentNode.parentNode;
 			if(parent){
 				parent.parentNode.removeChild(parent);
